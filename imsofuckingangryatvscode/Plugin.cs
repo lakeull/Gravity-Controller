@@ -97,7 +97,7 @@ namespace gravmod
                 if (xDir + yDir + zDir == xDir - yDir - zDir)
                 {
                     Logger.LogError("Error: directions cannot all equal 0! if you want 0 gravity use the multipliers instead.");
-                    yDir = 1;
+
                     return;
                 }
 
