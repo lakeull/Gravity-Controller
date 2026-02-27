@@ -41,10 +41,6 @@ namespace gravmod
         [Configgable("", "Debug Info", 10, "")]
         private static bool debugMode = false;
 
-        // todo: 
-        // - fixes to the elevator
-        // optomize code by using repeating invokes or ieumerator
-
         private void Awake()
         {
             // Plugin startup logic
