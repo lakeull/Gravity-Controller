@@ -94,17 +94,18 @@ namespace gravmod
             else if (modEnabled)
             {
                 // check to see they dont all equal 0
-                if (xDir + yDir + zDir == xDir - yDir - zDir)
+                if (xDir == 0 && yDir == 0 && zDir == 0)
                 {
                     Logger.LogError("Error: directions cannot all equal 0! if you want 0 gravity use the multipliers instead.");
-
                     return;
                 }
 
                 // return the vector 
-                Vector3 pVector = new Vector3(xDir, yDir, zDir).normalized;
+                Vector3 pVector = new Vector3(xDir, yDir, zDir);
+                // get it as a normalized
+                Vector3 pVectorNormal = Vector3.Normalize(pVector);
                 // multiply the vector times the multipliers and 40
-                Vector3 pVectorCalc = new Vector3(pVector.x * 40f * xMult, pVector.y * -40f * yMult, pVector.z * 40f * zMult);
+                Vector3 pVectorCalc = new Vector3(pVectorNormal.x * (40f * xMult), pVectorNormal.y * (-40f * yMult), pVectorNormal.z * (40f * zMult));
                 NewMovement.Instance.SwitchGravity(pVectorCalc, false, false);
                 gravityReset = false;
 
